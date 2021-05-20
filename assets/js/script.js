@@ -40,5 +40,34 @@ $(".description").on("click", "p", function() {
     textInput.trigger("focus");
   });
 
+  $(".description").on("blur", "textarea", function() {
+    // get the textarea's current value/text
+    var text = $(this)
+      .val()
+      .trim();
+    console.log(this);
+    // get the parent ul's id attribute
+    var status = $(this)
+      .closest(".description")
+      .attr("id")
+      //.replace("list-", "");
+    
+    // get the task's position in the list of other li elements
+    var index = $(this)
+      .closest(".description")
+      .index();
+    
+      // recreate p element
+    var taskP = $("<p>")
+    .addClass("m-1")
+    .text(text);
+    
+    // replace textarea with p element
+    $(this).replaceWith(taskP);
+
+});
+
+  
+
 
 
