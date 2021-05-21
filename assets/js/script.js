@@ -1,15 +1,19 @@
 //Other varibles
 var setTodayDT = moment().format('dddd, MMMM Do YYYY');
 var currentHour =moment().format('HH');
+var userDescEntry = "";
 
 // get them querySelctors
 var todayDT = document.querySelector("#currentDay");
 var hourSlot = document.querySelectorAll(".hourTime");
 var description = document.querySelectorAll(".description");
+var saveBtn = document.querySelector(".saveBtn");
 
 for (var i = 0; i < description.length; i++) {
     descriptionID = description[i].id;
+    descriptionUserText = description[i].textContent;
     console.log(descriptionID);
+    console.log(descriptionUserText);
 }
 //hourSlot.innerHTML = hourSlot.innerHTML.replace(/\D/g,'');
 for (var i = 0; i < hourSlot.length; i++) {
@@ -53,7 +57,7 @@ $(".description").on("click", "p", function() {
       .trim();
       
     //console.log(this);
-    console.log(descriptionID);
+    //console.log(descriptionID);
     // get the parent ul's id attribute
     var status = $(this)
       .closest(".description")
@@ -77,8 +81,26 @@ $(".description").on("click", "p", function() {
 
 });
 
-//get the text from div.
-$(".description").innerHTML
+
+
+$(".saveBtn").click(function() {
+    console.log("yassss you clicked save btn");
+
+    for (var i = 0; i < description.length; i++) {
+      descriptionID = description[i].id;
+      localStorage.setItem("descriptionID", JSON.stringify(descriptionID));
+      descriptionUserText = description[i].textContent;
+      localStorage.setItem("descriptionUserText", JSON.stringify(descriptionUserText));
+      console.log(descriptionID);
+      console.log(descriptionUserText);
+    }
+    //userDescEntry = descriptionUserText;
+    console.log(userDescEntry);
+    
+    //get the text from div.
+    //var userDescEntry = descriptionUserText;
+    //console.log(userDescEntry);
+});
 
   
 
