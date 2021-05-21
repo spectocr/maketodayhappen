@@ -3,8 +3,14 @@ var setTodayDT = moment().format('dddd, MMMM Do YYYY');
 var currentHour =moment().format('HH');
 
 // get them querySelctors
-var todayDT = document.querySelector("#currentDay")
+var todayDT = document.querySelector("#currentDay");
 var hourSlot = document.querySelectorAll(".hourTime");
+var description = document.querySelectorAll(".description");
+
+for (var i = 0; i < description.length; i++) {
+    descriptionID = description[i].id;
+    console.log(descriptionID);
+}
 //hourSlot.innerHTML = hourSlot.innerHTML.replace(/\D/g,'');
 for (var i = 0; i < hourSlot.length; i++) {
     milliHour = hourSlot[i].id;
@@ -16,14 +22,14 @@ for (var i = 0; i < hourSlot.length; i++) {
         hourSlot[i].classList = ("col-1 hour hourTime future")
     }
 
-    console.log(currentHour + " = current Hour");
-    console.log(hourSlot[i]);
-    console.log(milliHour + " = Millihour");
+   // console.log(currentHour + " = current Hour");
+    //console.log(hourSlot[i]);
+    //console.log(milliHour + " = Millihour");
 };
 // set hourSlot to whatever hour it is. making code more DRY.
 //hourSlot = hourSlot.innerHTML;
-console.log(hourSlot);
-console.log(currentHour);
+//console.log(hourSlot);
+//console.log(currentHour);
 
 // Set that time via queryselctor
 todayDT.innerHTML = setTodayDT
@@ -45,17 +51,21 @@ $(".description").on("click", "p", function() {
     var text = $(this)
       .val()
       .trim();
-    console.log(this);
+      
+    //console.log(this);
+    console.log(descriptionID);
     // get the parent ul's id attribute
     var status = $(this)
       .closest(".description")
       .attr("id")
+      //console.log(this);
       //.replace("list-", "");
     
     // get the task's position in the list of other li elements
     var index = $(this)
       .closest(".description")
       .index();
+      console.log(this);
     
       // recreate p element
     var taskP = $("<p>")
@@ -66,6 +76,9 @@ $(".description").on("click", "p", function() {
     $(this).replaceWith(taskP);
 
 });
+
+//get the text from div.
+$(".description").innerHTML
 
   
 
