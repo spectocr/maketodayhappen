@@ -7,7 +7,7 @@ var data = ""
 
 
 // get them querySelctors
-var todayDT = $("#currentDay");
+var todayDT = document.querySelector("#currentDay");
 var hourSlot = document.querySelectorAll(".hourTime");
 //grabs the whole div.
 var description = document.querySelectorAll(".description");
@@ -29,6 +29,7 @@ for (var i = 0; i < hourSlot.length; i++) {
 };
 
 todayDT.innerHTML = setTodayDT
+console.log(setTodayDT)
 
   $(".description").on("blur", "textarea", function() {
     // get the textarea's current value/text
