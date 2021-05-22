@@ -88,9 +88,9 @@ $(".saveBtn").click(function() {
 
     for (var i = 0; i < description.length; i++) {
       descriptionID = description[i].id;
-      localStorage.setItem("descriptionID", JSON.stringify(descriptionID));
+      //localStorage.setItem("descriptionID", JSON.stringify(descriptionID));
       descriptionUserText = description[i].textContent;
-      localStorage.setItem("descriptionUserText", JSON.stringify(descriptionUserText));
+      localStorage.setItem("descriptionUserText" + descriptionID, JSON.stringify(descriptionUserText));
       console.log(descriptionID);
       console.log(descriptionUserText);
     }
